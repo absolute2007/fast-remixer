@@ -1,0 +1,43 @@
+{
+  "name": "fast-remixer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "dev:electron": "node electron/dev.cjs",
+    "electron": "electron .",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dist": "vite build && electron-builder"
+  },
+  "build": {
+    "appId": "com.fastremixer.app",
+    "productName": "Fast Remixer",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "node_modules/ffmpeg-static/**/*"
+    ],
+    "asarUnpack": [
+      "node_modules/ffmpeg-static/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "public/app-icon.ico"
+    }
+  },
+  "devDependencies": {
+    "electron": "^41.4.0",
+    "electron-builder": "^26.8.1",
+    "vite": "^8.0.10",
+    "vite-plugin-node-polyfills": "^0.26.0"
+  },
+  "dependencies": {
+    "ffmpeg-static": "^5.3.0",
+    "music-metadata": "^11.12.3",
+    "soundtouchjs": "^0.3.0",
+    "wavesurfer.js": "^7.12.6"
+  }
+}
